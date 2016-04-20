@@ -20,20 +20,20 @@ DECLARE
     i integer;
 
 BEGIN
-    mindistance := (distance(apoint,amultils)+100);
-    IF NumGeometries(amultils) IS NULL THEN
-         mindistance:=distance(apoint,amultils);
+    mindistance := (st_distance(apoint,amultils)+100);
+    IF St_Numgeometries(amultils) IS NULL THEN
+         mindistance:=st_distance(apoint,amultils);
          nearestlinestring:=amultils;
     ELSE
-         FOR i IN 1 .. NumGeometries(amultils) LOOP
-             IF distance(apoint,GeometryN(amultils,i)) < mindistance THEN
-                mindistance:=distance(apoint,GeometryN(amultils,i));
-                nearestlinestring:=GeometryN(amultils,i);
+         FOR i IN 1 .. St_Numgeometries(amultils) LOOP
+             IF st_distance(apoint,St_Geometryn(amultils,i)) < mindistance THEN
+                mindistance:=st_distance(apoint,St_Geometryn(amultils,i));
+                nearestlinestring:=St_Geometryn(amultils,i);
              END IF;
          END LOOP;
     END IF;
 
-    nearestpoint:=line_interpolate_point(nearestlinestring,line_locate_point(nearestlinestring,apoint));
+    nearestpoint:=st_lineinterpolatepoint(nearestlinestring,st_linelocatepoint(nearestlinestring,apoint));
     RETURN nearestpoint;
 END;
 $BODY$
@@ -57,23 +57,23 @@ DECLARE
     ret tempseg.pointsnap;
     dist FLOAT;
 BEGIN
-    mindistance := (distance(apoint,amultils)+100);
-    IF NumGeometries(amultils) IS NULL THEN
-         mindistance:=distance(apoint,amultils);
+    mindistance := (st_distance(apoint,amultils)+100);
+    IF St_Numgeometries(amultils) IS NULL THEN
+         mindistance:=st_distance(apoint,amultils);
          nearestlinestring:=amultils;
          nearestnumline:=0;
     ELSE
-         FOR i IN 1 .. NumGeometries(amultils) LOOP
-             IF distance(apoint,GeometryN(amultils,i)) < mindistance THEN
-                mindistance:=distance(apoint,GeometryN(amultils,i));
-                nearestlinestring:=GeometryN(amultils,i);
+         FOR i IN 1 .. St_Numgeometries(amultils) LOOP
+             IF st_distance(apoint,St_Geometryn(amultils,i)) < mindistance THEN
+                mindistance:=st_distance(apoint,St_Geometryn(amultils,i));
+                nearestlinestring:=St_Geometryn(amultils,i);
                 nearestnumline:=i;
              END IF;
          END LOOP;
     END IF;
 
-    dist := line_locate_point(nearestlinestring,apoint);
-    nearestpoint:=line_interpolate_point(nearestlinestring,dist);
+    dist := st_linelocatepoint(nearestlinestring,apoint);
+    nearestpoint:=st_lineinterpolatepoint(nearestlinestring,dist);
 
     ret.point=nearestpoint;
     ret.line = nearestlinestring;
