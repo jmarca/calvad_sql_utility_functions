@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/jmarca/craigs_functions/issues"
   },
-  "homepage": "https://github.com/jmarca/craigs_functions#readme"
+  "homepage": "https://github.com/jmarca/craigs_functions#readme",
+  "dependencies": {
+    "calvad_db_geoextensions": "github:jmarca/calvad_db_geoextensions",
+    "tempseg_schema": "github:jmarca/tempseg_schema"
+  }
 }

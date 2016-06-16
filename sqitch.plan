@@ -2,4 +2,4 @@
 %project=craigs_functions
 %uri=https://github.com/jmarca/craigs_functions
 
-craigs_functions 2016-04-20T15:00:57Z James E. Marca <james@activimetrics.com> # Craigs useful functions for map matching
+craigs_functions [tempseg_schema:tempseg_schema calvad_db_geoextensions:geoextensions] 2016-04-20T15:00:57Z James E. Marca <james@activimetrics.com> # Craigs useful functions for map matching
