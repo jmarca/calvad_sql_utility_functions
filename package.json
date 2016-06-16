@@ -1,0 +1,22 @@
+{
+  "name": "craigs_functions",
+  "version": "1.0.0",
+  "description": "Some functions for snapping a point to a line or multiline that Craig wrote.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tap"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmarca/craigs_functions.git"
+  },
+  "author": "James E. Marca",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/jmarca/craigs_functions/issues"
+  },
+  "homepage": "https://github.com/jmarca/craigs_functions#readme"
+}
